@@ -1,0 +1,185 @@
+
+CREATE TABLE IF NOT EXISTS optimizacion.alumnos
+(
+    "idAlu" bigint NOT NULL,
+    nomalu character(30) COLLATE pg_catalog."default",
+    apealu character(30) COLLATE pg_catalog."default",
+    docid character(30) COLLATE pg_catalog."default",
+    CONSTRAINT alumnos_pkey PRIMARY KEY ("idAlu")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.alumnos
+    OWNER to postgres;
+
+=====
+
+
+CREATE TABLE IF NOT EXISTS optimizacion.semestres
+(
+    "idSem" bigint NOT NULL,
+    nomsem character(30) COLLATE pg_catalog."default",
+    abrsem character(30) COLLATE pg_catalog."default",
+    CONSTRAINT semestres_pkey PRIMARY KEY ("idSem")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.semestres
+    OWNER to postgres;
+====
+-- Table: optimizacion.anioacademico
+
+-- DROP TABLE IF EXISTS optimizacion.anioacademico;
+
+CREATE TABLE IF NOT EXISTS optimizacion.anioacademico
+(
+    "idAnio" bigint NOT NULL,
+    nomAnio character(30) COLLATE pg_catalog."default",
+    "idSem" bigint,
+    CONSTRAINT "anioAcademico_pkey" PRIMARY KEY ("idAnio"),
+    CONSTRAINT "anioAcademico_idSem_fkey" FOREIGN KEY ("idSem")
+        REFERENCES optimizacion.semestres ("idSem") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.anioacademico
+    OWNER to postgres;
+
+====
+
+-- Table: optimizacion.facultades
+
+-- DROP TABLE IF EXISTS optimizacion.facultades;
+
+CREATE TABLE IF NOT EXISTS optimizacion.facultades
+(
+    idFac bigint NOT NULL,
+    nomfac character COLLATE pg_catalog."default",
+    CONSTRAINT facultades_pkey PRIMARY KEY ("idFac")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.facultades
+    OWNER to postgres;
+
+=====
+-- Table: optimizacion.examenes
+
+-- DROP TABLE IF EXISTS optimizacion.examenes;
+
+CREATE TABLE IF NOT EXISTS optimizacion.examenes
+(
+    "idExm" bigint NOT NULL,
+    fchexm date,
+    hraexm time without time zone,
+    CONSTRAINT examenes_pkey PRIMARY KEY ("idExm")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.examenes
+    OWNER to postgres;
+
+====
+
+-- Table: optimizacion.cursosfacultades
+
+-- DROP TABLE IF EXISTS optimizacion.cursosfacultades;
+
+CREATE TABLE IF NOT EXISTS optimizacion.cursosfacultades
+(
+    "idFac" bigint,
+    "idCur" bigint,
+    CONSTRAINT "cursosFacultades_idCur_fkey" FOREIGN KEY ("idCur")
+        REFERENCES optimizacion.cursos ("idCur") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "cursosFacultades_idFac_fkey" FOREIGN KEY ("idFac")
+        REFERENCES optimizacion.facultades ("idFac") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.cursosfacultades
+    OWNER to postgres;
+
+====
+CREATE TABLE IF NOT EXISTS optimizacion.cursos
+(
+    "idCur" bigint NOT NULL,
+    "idAnio" bigint,
+    nomcur character(30) COLLATE pg_catalog."default",
+    abrcur character(10) COLLATE pg_catalog."default",
+    CONSTRAINT cursos_pkey PRIMARY KEY ("idCur"),
+    CONSTRAINT "cursos_idAnio_fkey" FOREIGN KEY ("idAnio")
+        REFERENCES optimizacion.anioacademico ("idAnio") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.cursos
+    OWNER to postgres;
+====
+-- Table: optimizacion.cursosalumnos
+
+-- DROP TABLE IF EXISTS optimizacion.cursosalumnos;
+
+CREATE TABLE IF NOT EXISTS optimizacion.cursosalumnos
+(
+    "idAlu" bigint,
+    "idCur" bigint,
+    nota integer,
+    CONSTRAINT "cursosalumnos_idAlu_idCur_key" UNIQUE ("idAlu", "idCur"),
+    CONSTRAINT "cursosAlumnos_idAlu_fkey" FOREIGN KEY ("idAlu")
+        REFERENCES optimizacion.alumnos ("idAlu") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "cursosAlumnos_idCur_fkey" FOREIGN KEY ("idCur")
+        REFERENCES optimizacion.cursos ("idCur") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.cursosalumnos
+    OWNER to postgres;
+
+====
+
+-- Table: optimizacion.examenesalu
+
+-- DROP TABLE IF EXISTS optimizacion.examenesalu;
+
+CREATE TABLE IF NOT EXISTS optimizacion.examenesalu
+(
+    "idCur" bigint,
+    "idAlu" bigint,
+    "idExm" bigint,
+    nota integer,
+    CONSTRAINT "examenesalu_idCur_idAlu_fkey" FOREIGN KEY ("idAlu", "idCur")
+        REFERENCES optimizacion.cursosalumnos ("idAlu", "idCur") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "examenesalu_idExm_fkey" FOREIGN KEY ("idExm")
+        REFERENCES optimizacion.examenes ("idExm") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS optimizacion.examenesalu
+    OWNER to postgres;
+
+

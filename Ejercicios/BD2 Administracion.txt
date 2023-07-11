@@ -1,0 +1,25 @@
+Administracion de sistemas
+	Estruturado
+	ordenado
+	inventiva
+	resolucion 
+	multitasking, multithread  --> poder distinguir que cosas se pueden hacer en simultaneo
+	multidisciplinario, transversal --> lo que hago afecta a otros
+	actitud, aprendizaje
+	herramientas
+	
+	Simplicidad
+	
+	Claridad
+	Generalidad --> que las soluciones no son especificas de un problema.
+				--> 
+				
+				
+	
+	
+Comandos:
+	sudo apt-get update
+	sudo apt install net-tools
+	sudo apt-get install wget
+	
+	

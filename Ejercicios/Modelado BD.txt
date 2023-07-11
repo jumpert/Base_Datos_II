@@ -1,0 +1,89 @@
+Un mensaje de sabiduria. Ramón Bayes --Video--
+Analisis de requerimientos, basarme en la objetividad y ponerle creatividad
+Cosas Importante: el para que?
+
+Modelado de datos, 2 etapas:
+	Analisis: conocimiento del negocio, el para que.
+	Diseño: que utilizo y volcar la parte artistica y las tecnicas que ayudan.
+	
+Costo y beneficio del modelado de datos:
+	NO ES UNA ALTERNATIVA
+	Ninguna BD se a construido sin un modelo de datos
+	Tres asppectos
+		Formalidad, que el cliente lo pueda entender (alto Nivel)
+		Involucrados en la construccion: cliente, usuario final, experto en la materia, analista
+		Esfuerzo en el diseño, depende de los factores como tiempo, costo, etc.
+		
+Porque es importante el modelo?
+	Buscar la consistencia, al momento de almacenar la información
+	Calidad de datos, caracteres en lugar de números, el mismo tipo de datos para el mismo dato
+	
+Propiedades (check List)
+	Completitud, contemple almacenamiento de la informacion que voy a trabajar
+	No redundancia, que la informacion no este repetida en varios lados.
+	Abarcar las reglas de negocio, mostrar en el modelo todas las reglas de negocio, ej. identificacion de funcionario.
+	Reutilizacion de datos almacenados.
+	Estabilidad y flexibilidad frente a cambios, debe representar la aplicacion y que sea "generico"
+	Elegancia, que sea simple (no complicarse para crear la BD)
+	Comunicacion, debe poder ser entendible por otros.
+	Integracion, que se pueda integrar en otro modelo.
+	conflicto de Objetivos y su negociacion para una buena salida, negociar con las otras partes involucradas.
+	Performance, no se piensa en la performance todavia, se ve cuando se vaya a implementar.
+	
+Donde encaja el modelado de datos?
+	Metodologia? no deberia importar.
+	quienes deben estar involucrados? 
+	
+Ciclos de vida
+	factibilidad
+	analisis de req.
+	diseño conceptual
+		prototipo
+	implementacion y testing
+	implementacion
+	
+Diseños de BD
+	diseño conceptual, representacion abstracta y de alto nivel (diagramas)
+	diseño logico, traduce la representacion en especificaciones implementales, que tipo de BD voy a utilizar.	(tablas y relaciones)
+	diseño fisico, como voy a almacenar las tablas, tipo de manejador
+	
+Requerimientos de datos y aplicaciones
+	Diseño conceptual 		<===>   analisis Funcional    (pueden depender una de la otra
+	
+Etapas
+	Etapas del diseño
+		diseño conceptual y logico 
+
+Metodologia del diseño
+	estrategias de sieño 
+		descendentes o top-down
+		ascendentes o bottom-pup
+		centrifugas
+		Mixtas
+
+Requisitos Iniciales
+	Descripcion de lenguaje natural
+	
+	
+Divide y conquista
+	Dividir la temática,en subesquema.
+	
+Problema del esquema conceptual.
+	reestructuracion y refinamiento
+		Autoexplicacion, se tiene que poder entenderlo a simple vista.
+		expresividad, que no sea tan minimalista que realmente permita poder comunicar lo que tiene.
+		normalidad, que a la hora de pasarlo a tabla ya este normalizado, si yo tengo un dato que voy a almacenar, tiene que estar guardado pocas veces, pero referenciado muchas.
+
+Documentacion
+	
+	
+Actitud en el modelado
+	Ser conciente
+		poder explicar lo que hice.
+	ser creativo
+		considerar alternativas, ser criticos, que otro pueda descubrir fallas o mejores.
+	analizar y refinar.
+	
+	Ser Valiente
+		en un campo nuevo, investigar.
+		

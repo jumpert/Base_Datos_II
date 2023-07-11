@@ -1,0 +1,133 @@
+Que es un MER??
+
+Modelo entidad relacion (MER)
+	es el modelo más utilizado para diseñar modelos conceptuales.
+	
+	Entidades, representan clases de objetos de la realidad, se representan con un rectuanculo
+	
+	Relaciones (interrelacion) representan agrefaciones de 2 o mas entidades, con rombos
+	
+	Atributos, representan propiedades basicas
+	
+	Jerarquias de generalizacion, para representar jerarquias y especializaciones de otras clases.
+		ej. personas, y más especifico, alumnos, profesores, etc.
+		
+Definiciones.
+	Entidades, objeto que existe de forma tangible o intangibe. se utiliza un rectangulo para representarlo
+	Entidad Debil, si su existencia depende de la existencia de una entidad fuerte. Rectangulo con doble borde.
+	
+	Atributos, las caracteristicas de las entidad se representan con circulos
+	cada atributo tiene un dominio.
+	Cuando los represento en un MER tengo que poder verlo cuando agrego un atributo.
+	doble circulo, atrivuto que piede varios valores asociadlod
+	
+	Relacion, asociacion que existe entre entidades. se representan con un rombo.
+	EJ
+		Persona -- Cursa -->> curso
+		
+		
+	Cadinalidad,
+		Número de entidades que esta relacionada con otra entidad.
+		Posibilidades:
+			1:1
+			1:N
+			M:N 
+			0?
+			
+Introduccion
+	Modelos de abstraccion
+		Abstraccion de clasificación, dejamos de lado las caracteristicas particulares y nos quedamos con las caracteristicas comunes.
+		Abstraccion de Agregación, cuando pienso en las caracteristicas que componen determinado concepto.
+		Abstraccion de generalizacion, cuando un concepto mas general.
+		
+Abstraccion de clasificación
+	Se asocia a la frase "es miembro de".
+	"clase" de objetos en base a sus caracteristicas comunes.
+	
+Abstraccion de agregacion
+	se asocia a la frase "es una parte de"
+	a partir de un conjunto de clases, no necesariamente distintas, que representan sus componentes
+	
+Abtraccion de generalizacion
+	se asocia a la frase "es un" 
+	define una relacion de subconjunto entre los elementos de dos o más clases
+	Aunque es muy comun e intuitiva, es muy util, por la cuilidad de Herencia: todas las abstracciones de la clase generica son heredadas por las clases subconjunto.
+	
+
+
+1- estudiantes, examen, curso
+2- trabajador inmoboliario, cliente, inmueble
+3- profesor, colegio
+4- productos, factura
+5- niños, plan vacacional
+6- aplicacion y telefono
+7- electrodomesticos, tienda, centro comercial
+8- curso, persona, facultad
+9- palacio justicia, 
+10- nadador, equipo olimpico
+11- 
+
+
+BASE DE DATOS
+Todas tienen formato de Arbol B* 	--> que tiene un 33% de espacio libre para evitar balancear.
+Contiene:
+	BD CATALOGO  (INFORMATION SCHEMA) utilizar la fuente de datos del programa.
+		Catalogo, se usa para probar si algo de lo que quiero agregar ya esta utilizado
+		-SYSTABLES
+		-SYSOBJECTS
+
+SQL 
+Comunicacion con la Base de dato a traves de SQL, retorna DATA o Codigo de retorno.
+1° analizador la sitaxis, reglas gramaticales
+BNF Backus Naur Form
+SQL LR(1) --> los verbos se escriben a la izquierda.
+2° analizador semantico, saber si lo que escribi es coherente y si existe
+3° seguridad, 
+STATE LESS
+	coockies
+SESION! --> Sincronica
+Permisos basados en ROLES
+Sistemas multinivel
+4° Optimizador
+5° CACHES
+6° Transacciones: Recuperacion y concurrencia
+7° Runtamie, sincroniza funcionamiento
+8° procesos de usuario, coordina los puertos.
+9° Archiva, guarda la bitacora en disco
+10° Es
+
+Formatos de guardado de datos.
+.txt 
+	limitado
+	secuencial
+	para guardar registros tienen indicador y clasificacion 0D y 0A, compresion de datos.
+	
+PAGINAS de DISCO:
+	-Cabezal, lugar, espacio, etc
+	-Fila 1, fila 2, fila 3...
+	-En la parte inferior tienen unos registros llamados, Numeros de Filas, que sirven para encontrar una fila especificada.
+	-tienen en cada fila un porcentaje de espacio libre 25% por si alguna fila se requiere extender.
+CACHES:
+	-Contiene paginas de gran tamaño para evitar grabar a disco que es la parte mas lenta.
+	-solo se guardan los datos de valores mas chicos.
+		INSERT(FILA)
+		DELETE(PK)
+		UPDATE(PK, VALOR)
+		Todo esto se guarda en una bitacora para evitar llevarlo en disco.
+	
+
+En todos los programas, existe una llamada CALL que invoca una libreria SQL LIB.EXEC 
+para los casos:
+SELECT * --------
+WHERE CI = ___
+AND CI= :CI
+
+
+SISTEMAS 
+SQL Comunucation Area
+-SQL CODE
+-SQL MSG + LISTA	 
+	'violacion FK %s'
+	Lista[1] = 'F2_EMP'
+	
+-Datos[]
